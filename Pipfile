@@ -8,6 +8,7 @@ ipykernel = "*"
 matplotlib = "*"
 sympy = "*"
 numpy = "*"
+pandas = "*"
 
 [dev-packages]
 
