@@ -9,6 +9,7 @@ matplotlib = "*"
 sympy = "*"
 numpy = "*"
 pandas = "*"
+black = "*"
 
 [dev-packages]
 
