@@ -1,19 +1,30 @@
-Adam Gustafsson:25
-Bjorn Bjornsson:39
-Bose Bosseson:32
-Ella Ester:41
-Emil Johansson:23
-Emma Boden:32
-Erik Eriksson:31
+Grade F:
 Fredrika Ulven:10
-Gore Bord:55
+Sven Erik Karlsson:13
+
+Grade E
+Adam Gustafsson:25
+Emil Johansson:23
 Hakan Hakanson:24
 Hanna Karlsson:23
 Ida Hakansson:23
-Jakob Kallander:65
-Johan Johansson:42
+
+Grade D
+Bjorn Bjornsson:39
+Bose Bosseson:32
+Emma Boden:32
+Erik Eriksson:31
 Jonas Jonasson:31
 Karl Karlsson:32
-Ove Karlsten:41
-Sven Erik Karlsson:13
 Sven Erik Lundin:39
+
+Grade C
+Ella Ester:41
+Johan Johansson:42
+Ove Karlsten:41
+
+Grade B
+Gore Bord:55
+
+Grade A
+Jakob Kallander:65
