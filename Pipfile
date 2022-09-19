@@ -5,11 +5,11 @@ name = "pypi"
 
 [packages]
 ipykernel = "*"
-matplotlib = "*"
 sympy = "*"
 numpy = "*"
 pandas = "*"
 black = "*"
+matplotlib = "*"
 scikit-learn = "*"
 
 [dev-packages]
