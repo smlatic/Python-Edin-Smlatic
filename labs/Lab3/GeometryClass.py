@@ -2,6 +2,7 @@ from math import pi
 from math import sqrt
 
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 from matplotlib.patches import Rectangle as Rect
 from matplotlib.patches import Circle as Circ
 
@@ -54,7 +55,7 @@ class Geometry:
         """Return the horizontal or vertical distance of two points of X, or two points of Y."""
         p1 = Geometry.validation_check(p1)
         p2 = Geometry.validation_check(p2)
-        return (p1-p2)
+        return abs(p1-p2)
 
 
     def __eq__(self, other) -> bool:
@@ -120,7 +121,7 @@ class Rectangle(Geometry):
 
     def __repr__(self) -> str:
         """Present instance"""
-        return f"Rectangle with center point: ({self.x}, {self.y})- (Horizontal side, vertical side): ({self.side1}, {self.side2})." 
+        return f"Rectangle X and Y midpoint: ({self.x}, {self.y}). Horizontal and vertical lenght: ({self.side1}, {self.side2})." 
 
 # -------------- RECTANGLE PLOT --------------------
 
@@ -128,12 +129,31 @@ class Rectangle(Geometry):
         """Draw rectangle and a point"""
         fig, ax = plt.subplots(dpi=100,figsize=(10,4))
 
+        # Draw point. if statement so if there is input for the point it will draw it. Otherwise it will draw just the rectangle.
+        if x_point !=None and y_point !=None:
+            ax.plot(x_point,y_point, color='red', marker='*')
+
+
         # draw rectangle, referance: https://www.pythonpool.com/matplotlib-draw-rectangle/
         ax.add_patch(Rect((self.x-0.5*self.side1, self.y-0.5*self.side2), self.side1, self.side2, color="b", fill=False, linewidth = 2))
 
+        # Fix Rectangle, adjust the figsize aspect ratio to not stretch the rectangle.
+        # https://stackoverflow.com/questions/52340318/correcting-aspect-ratio-of-circle-plot-with-matplotlib-patches
+        ax.set_aspect("equal")
+
         # draw midpoint and grid
-        ax.plot(self.x, self.y,"s", color ="r")
+        ax.plot(self.x, self.y,"s", color ="b")
         ax.grid()
+
+        # Legend : custom legend, with placement outside the plot. 
+        # https://stackoverflow.com/questions/39500265/how-to-manually-create-a-legend
+        # https://stackoverflow.com/questions/4700614/how-to-put-the-legend-outside-the-plot
+        Shape = mpatches.Patch(color='blue', label='Geometric Shape')
+        pointtocheck = mpatches.Patch(color='red', label='Point')
+
+        plt.legend(handles=[Shape, pointtocheck], prop={'size': 8}, loc='upper center', bbox_to_anchor=(0.5, -0.06),
+          fancybox=True, shadow=True, ncol=5)
+
 
         # create title and plot show
         ax.set(title="Rectangle and Midpoint")
@@ -178,7 +198,7 @@ class Circle(Geometry):
 
     def __repr__(self) -> str:
         """Present instance"""
-        return f"Circle with center point: ({self.x}, {self.y}), Radius: {self.radius}" 
+        return f"Circle midpoint X and Y: ({self.x}, {self.y})\nRadius: {self.radius}" 
 
 # ------------------------ CIRCLE PLOT ----------------------
 
@@ -186,18 +206,34 @@ class Circle(Geometry):
         """Draw circle and a point"""
         # Draw fig
         fig, ax = plt.subplots(dpi=100,figsize=(10,4))
+
+        # Draw point. if statement so if there is input for the point it will draw it. Otherwise it will draw just the circle.
+        if x_point !=None and y_point !=None:
+            ax.plot(x_point,y_point, color='red', marker='*')
         
         # Draw circle
-        ax.add_patch(Circ((self.x, self.y), self.radius, color="b", fill=False, clip_on=False))
+        test = ax.add_patch(Circ((self.x, self.y), self.radius, color="b", fill=False, clip_on=False))
 
         # Fix Circle, adjust the figsize aspect ratio to not stretch the circle.
         # https://stackoverflow.com/questions/52340318/correcting-aspect-ratio-of-circle-plot-with-matplotlib-patches
         ax.set_aspect("equal")
 
         # draw midpoint and grid
-        ax.plot(self.x, self.y,"s", color ="r")
+        test2 = ax.plot(self.x, self.y,"s", color ="b")
         ax.grid()
 
         # create title and plot show
         ax.set(title="Circle with Midpoint")
+
+        
+        # Legend : custom legend, with placement outside the plot. 
+        # https://stackoverflow.com/questions/39500265/how-to-manually-create-a-legend
+        # https://stackoverflow.com/questions/4700614/how-to-put-the-legend-outside-the-plot
+        Shape = mpatches.Patch(color='blue', label='Geometric Shape')
+        pointtocheck = mpatches.Patch(color='red', label='Point')
+
+        plt.legend(handles=[Shape, pointtocheck], prop={'size': 8}, loc='upper center', bbox_to_anchor=(0.5, -0.06),
+          fancybox=True, shadow=True, ncol=5)
+
+
         plt.show()
